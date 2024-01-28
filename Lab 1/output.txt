@@ -1,0 +1,62 @@
+Entering SimpleTestForking thread child1 #0 with func=0x804a640, arg=1, join=NO
+Putting thread child1 #0 on ready list.
+Forking thread child2 #0 with func=0x804a640, arg=2, join=NO
+Putting thread child2 #0 on ready list.
+*** thread 0 looped 0 times
+Yielding thread main #0
+Putting thread main #0 on ready list.
+Switching from thread main #0 to thread child1 #0
+*** thread 1 looped 0 times
+Yielding thread child1 #0
+Putting thread child1 #0 on ready list.
+Switching from thread child1 #0 to thread child2 #0
+*** thread 2 looped 0 times
+Yielding thread child2 #0
+Putting thread child2 #0 on ready list.
+Switching from thread child2 #0 to thread main #0
+Now in thread main #0
+*** thread 0 looped 1 times
+Yielding thread main #0
+Putting thread main #0 on ready list.
+Switching from thread main #0 to thread child1 #0
+Now in thread child1 #0
+*** thread 1 looped 1 times
+Yielding thread child1 #0
+Putting thread child1 #0 on ready list.
+Switching from thread child1 #0 to thread child2 #0
+Now in thread child2 #0
+*** thread 2 looped 1 times
+Yielding thread child2 #0
+Putting thread child2 #0 on ready list.
+Switching from thread child2 #0 to thread main #0
+Now in thread main #0
+*** thread 0 looped 2 times
+Yielding thread main #0
+Putting thread main #0 on ready list.
+Switching from thread main #0 to thread child1 #0
+Now in thread child1 #0
+*** thread 1 looped 2 times
+Yielding thread child1 #0
+Putting thread child1 #0 on ready list.
+Switching from thread child1 #0 to thread child2 #0
+Now in thread child2 #0
+*** thread 2 looped 2 times
+Yielding thread child2 #0
+Putting thread child2 #0 on ready list.
+Switching from thread child2 #0 to thread main #0
+Now in thread main #0
+Finishing thread main #0
+Sleeping thread main #0
+Switching from thread main #0 to thread child1 #0
+Now in thread child1 #0
+Deleting thread main #0
+Finishing thread child1 #0
+Sleeping thread child1 #0
+Switching from thread child1 #0 to thread child2 #0
+Now in thread child2 #0
+Deleting thread child1 #0
+Finishing thread child2 #0
+Sleeping thread child2 #0
+No threads ready or runnable, and no pending interrupts.
+Assuming the program completed.
+Machine halting!
