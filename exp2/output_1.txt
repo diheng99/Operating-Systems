@@ -1,0 +1,21 @@
+Thread 1 Completed.
+Thread 2 Completed.
+Thread 3 Completed.
+Thread 4 Completed.
+Thread 5 Completed.
+Thread 6 Completed.
+Thread 7 Completed.
+Thread 8 Completed.
+Thread 9 Completed.
+Thread 0 Completed.
+No threads ready or runnable, and no pending interrupts.
+Assuming the program completed.
+Machine halting!
+
+Ticks: total 260, idle 40, system 220, user 0
+Disk I/O: reads 0, writes 0
+Console I/O: reads 0, writes 0
+Paging: faults 0, outs 0, tlb miss: 0
+Network I/O: packets received 0, sent 0
+
+Cleaning up...
