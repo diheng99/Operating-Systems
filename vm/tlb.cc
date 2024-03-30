@@ -12,6 +12,8 @@
 // Figures out what to do (get from IPT, or pageoutpagein) and does it.
 //----------------------------------------------------------------------
 
+static int FIFOPointer = 0;
+
 void UpdateTLB(int possible_badVAddr)
 {
   int badVAddr;
@@ -43,7 +45,17 @@ void UpdateTLB(int possible_badVAddr)
 int VpnToPhyPage(int vpn)
 {
   //your code here to get a physical frame for page vpn
-  //you can refer to PageOutPageIn(int vpn) to see how an entry was created in ipt
+  //you can refer to PageOutPageIn(int vpn) to see how an entry was created in iptS
+
+	for(int i = 0; i < NumPhysPages; i++) {
+		if(memoryTable[i].valid && 
+		   memoryTable[i].pid == currentThread->pid &&
+		   memoryTable[i].vPage == vpn) {
+			printf("Physical Page located at frame %d", i);
+			return i;
+			}	
+		}
+	return -1;
 }
 
 //----------------------------------------------------------------------
@@ -54,10 +66,19 @@ int VpnToPhyPage(int vpn)
 
 void InsertToTLB(int vpn, int phyPage)
 {
-  int i = 0; //entry in the TLB
+  int i = FIFOPointer; //entry in the TLB
   
   //your code to find an empty in TLB or to replace the oldest entry if TLB is full
+
+	for(int j = 0; j < TLBSize; j++) {
+		if(!machine->tlb[j].valid) {
+			i = j;
+			break;
+		}
+	}
   
+	FIFOPointer = (i + 1) % TLBSize;	
+
   // copy dirty data to memoryTable
   if(machine->tlb[i].valid){
     memoryTable[machine->tlb[i].physicalPage].dirty=machine->tlb[i].dirty;
@@ -207,8 +228,18 @@ int lruAlgorithm(void)
 {
   //your code here to find the physical frame that should be freed 
   //according to the LRU algorithm. 
-  int phyPage;
-  
+  int phyPage = 0, earliestTime = 2147483647;
+
+	for(int i = 0; i < NumPhysPages; i++) {
+		if(!memoryTable[i].valid) {
+			return i;	
+	}
+	
+	if(memoryTable[i].lastUsed < earliestTime) {
+		earliestTime = memoryTable[i].lastUsed;
+		phyPage = i;	
+		}
+  	}
   return phyPage;
 }
 
